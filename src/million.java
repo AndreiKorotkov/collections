@@ -8,10 +8,10 @@ import java.util.*;
 
 public class million {
 
-    public List<Integer> million;
+    public List<Integer> list;
 
-    public void setMillion(List<Integer> million) {
-        this.million = million;
+    public void setList(List<Integer> list) {
+        this.list = list;
     }
 
     public void addMillion() {
@@ -20,43 +20,39 @@ public class million {
             tmp.add(i);
             Collections.shuffle(tmp);
         }
-        setMillion(tmp);
+        setList(tmp);
     }
 
     public void assertRandom() {
         for (int i = 0; i < 10; i++) {
-            System.out.print(million.get(i) + ", ");
+            System.out.print(list.get(i) + ", ");
         }
     }
 
     public void assertUnique() {
-        boolean unique;
-        TreeSet<Integer> tmp = new TreeSet<>();
-        tmp.addAll(million);
-        if (tmp.size() == million.size()) {
-            unique = true;
+        boolean Unique;
+        HashSet<Integer> tmp = new HashSet<>();
+        tmp.addAll(list);
+        if (tmp.size() == list.size()) {
+            Unique = true;
         } else {
-            unique = false;
+            Unique = false;
         }
         System.out.println();
-        System.out.println(unique);
+        System.out.println(Unique);
     }
 
     public void minElement() {
-        System.out.println(Collections.min(million));
+        System.out.println("Минимальный элемент в коллекции " + Collections.min(list));
     }
 
     public void removeOdd() {
-        million.removeIf(i -> i % 2 != 0);
+        list.removeIf(i -> i % 2 != 0);
     }
 
     public void nextToMaxElement() {
-        Collections.sort(million, new Comparator<Integer>() {
-            public int compare(Integer i1, Integer i2) {
-                return i1.toString().compareTo(i2.toString());
-            }
-        });
-        System.out.println(million.get(million.size() - 2));
+        Collections.sort(list);
+        System.out.println("Предпоследний по величине элемент " + list.get(list.size() - 2));
     }
 
     public static void main(String[] args) {
@@ -65,7 +61,7 @@ public class million {
 
         myMillion.addMillion();
 
-        System.out.println(myMillion.million.size());
+        System.out.println(myMillion.list.size());
 
         myMillion.assertRandom();
 
@@ -75,8 +71,10 @@ public class million {
 
         myMillion.removeOdd();
 
-        System.out.println(myMillion.million.size());
+        System.out.println(myMillion.list.size() + " размер коллекции после удаления нечетных элементов");
 
         myMillion.nextToMaxElement();
+
+
     }
 }
